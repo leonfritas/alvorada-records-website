@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import type { MouseEvent } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import CassetteIcon from './CassetteIcon'
@@ -19,6 +20,27 @@ export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
 
+  const handleNavClick =
+    (href: string) => (event: MouseEvent<HTMLAnchorElement>) => {
+      event.preventDefault()
+
+      const target = document.querySelector(href)
+
+      if (target) {
+        const yOffset = 80
+        const elementPosition =
+          target.getBoundingClientRect().top + window.pageYOffset
+        const offsetPosition = elementPosition - yOffset
+
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth',
+        })
+      }
+
+      setIsOpen(false)
+    }
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 50)
@@ -32,7 +54,9 @@ export default function Navigation() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? 'glass shadow-lg py-4' : 'bg-transparent py-6'
+        scrolled || isOpen
+          ? 'bg-dark-900/90 backdrop-blur-lg shadow-lg border-b border-white/5 py-4'
+          : 'bg-transparent py-6'
       }`}
     >
       <div className="container mx-auto px-4">
@@ -58,6 +82,7 @@ export default function Navigation() {
                 key={item.name}
                 href={item.href}
                 className="text-gray-300 hover:text-primary-400 transition-colors relative group"
+                onClick={handleNavClick(item.href)}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 }}
@@ -85,7 +110,7 @@ export default function Navigation() {
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
-              className="md:hidden mt-4 glass rounded-lg overflow-hidden"
+              className="md:hidden mt-4 rounded-lg overflow-hidden bg-dark-900/95 backdrop-blur-lg border border-white/10"
             >
               <div className="flex flex-col space-y-4 p-4">
                 {navItems.map((item, index) => (
@@ -93,10 +118,10 @@ export default function Navigation() {
                     key={item.name}
                     href={item.href}
                     className="text-gray-300 hover:text-primary-400 transition-colors py-2"
+                    onClick={handleNavClick(item.href)}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.05 }}
-                    onClick={() => setIsOpen(false)}
                   >
                     {item.name}
                   </motion.a>
