@@ -74,7 +74,7 @@ export default function Footer() {
               {['Sobre', 'Serviços', 'Estúdio', 'Artistas', 'Portfólio', 'Contato'].map((item, index) => (
                 <motion.li
                   key={item}
-                  initial={{ opacity: 0, x: -20 }}
+                  // initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.05 }}
@@ -102,7 +102,7 @@ export default function Footer() {
             </motion.h3>
             <ul className="space-y-3">
               <motion.li
-                initial={{ opacity: 0, x: -20 }}
+                // initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 className="flex items-center space-x-2 text-gray-400"
@@ -111,7 +111,7 @@ export default function Footer() {
                 <span>alvoradarecords@gmail.com</span>
               </motion.li>
               <motion.li
-                initial={{ opacity: 0, x: -20 }}
+                // initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
@@ -121,7 +121,7 @@ export default function Footer() {
                 <span>(92) 99149-3463</span>
               </motion.li>
               <motion.li
-                initial={{ opacity: 0, x: -20 }}
+                // initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
@@ -131,7 +131,7 @@ export default function Footer() {
                 <span>(92) 98853-8416</span>
               </motion.li>
               <motion.li
-                initial={{ opacity: 0, x: -20 }}
+                // initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
