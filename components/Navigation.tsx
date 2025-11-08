@@ -44,11 +44,11 @@ export default function Navigation() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
-            <CassetteIcon animated className="w-12 h-8" />
-            <div className="flex flex-col">
-              <span className="text-gradient text-2xl font-bold">A.RCDS</span>
-              <span className="text-xs text-gray-400 -mt-1">RECORDS</span>
-            </div>
+            {/* <CassetteIcon animated className="w-12 h-8" />
+            <div className="flex flex-col"> */}
+              <span className="text-gradient text-2xl font-bold">LOGO</span>
+              {/* <span className="text-xs text-gray-400 -mt-1">RECORDS</span> */}
+            {/* </div> */}
           </motion.a>
 
           {/* Desktop Menu */}

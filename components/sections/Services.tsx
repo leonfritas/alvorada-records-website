@@ -122,7 +122,7 @@ export default function Services() {
               <div className="relative z-10">
                 {/* Icon */}
                 <motion.div
-                  whileHover={{ rotate: 360, scale: 1.1 }}
+                  // whileHover={{ rotate: 360, scale: 1.1 }}
                   transition={{ duration: 0.6 }}
                   className={`w-16 h-16 bg-gradient-to-br ${service.color} rounded-xl flex items-center justify-center mb-6 group-hover:glow`}
                 >

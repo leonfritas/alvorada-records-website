@@ -35,27 +35,27 @@ export default function Contact() {
     {
       icon: Mail,
       title: 'Email',
-      value: 'contato@alvoradarecords.com',
+      value: 'alvoradarecords@gmail.com',
       link: 'mailto:contato@alvoradarecords.com',
     },
     {
       icon: Phone,
       title: 'Telefone',
-      value: '(11) 99999-9999',
+      value: '(92) 99149-3463 / (92) 98853-8416',
       link: 'tel:+5511999999999',
     },
     {
       icon: MapPin,
       title: 'Endereço',
-      value: 'São Paulo, SP - Brasil',
+      value: 'Manaus, AM - Brasil',
       link: '#',
     },
   ]
 
   const socialLinks = [
-    { icon: Instagram, link: '#', name: 'Instagram' },
-    { icon: Facebook, link: '#', name: 'Facebook' },
-    { icon: Youtube, link: '#', name: 'Youtube' },
+    { icon: Instagram, link: 'https://www.instagram.com/alvoradarecords/', name: 'Instagram' },
+    { icon: Facebook, link: 'https://www.facebook.com/alvoradarecords/', name: 'Facebook' },
+    { icon: Youtube, link: 'https://www.youtube.com/@alvoradarecords5172', name: 'Youtube' },
   ]
 
   return (
@@ -139,7 +139,7 @@ export default function Contact() {
                   value={formData.phone}
                   onChange={handleChange}
                   className="w-full px-4 py-3 glass rounded-lg focus:ring-2 focus:ring-primary-500 focus:outline-none transition-all"
-                  placeholder="(11) 99999-9999"
+                  placeholder="(92) 99999-9999"
                 />
               </motion.div>
 
@@ -224,7 +224,7 @@ export default function Contact() {
                   className="glass p-6 rounded-2xl flex items-center space-x-4 group"
                 >
                   <motion.div
-                    whileHover={{ rotate: 360 }}
+                    // whileHover={{ rotate: 360 }}
                     transition={{ duration: 0.6 }}
                     className="w-14 h-14 bg-gradient-to-br from-primary-500 to-teal-500 rounded-xl flex items-center justify-center group-hover:glow"
                   >

@@ -12,46 +12,18 @@ export default function Artists() {
 
   const artists = [
     {
-      name: 'Ana Silva',
-      genre: 'Pop/R&B',
-      image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400',
-      instagram: '@anasilvamusic',
-      description: 'Voz marcante com 5 singles lançados',
+      name: 'Conduta Zero 92',
+      genre: 'Rock',
+      image: '/artists/capa-condutazero92.jpg',
+      instagram: '@conduta092oficial',
+      description: 'Banda consolidada na cena manauara com 8 anos de estrada',
     },
     {
-      name: 'Marcus Beat',
-      genre: 'Hip Hop/Trap',
-      image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400',
-      instagram: '@marcusbeat',
-      description: 'Produtor e MC com 2 álbuns',
-    },
-    {
-      name: 'Luna Dreams',
+      name: 'Israel Serudio',
       genre: 'Indie/Alternative',
-      image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400',
-      instagram: '@lunadreamsmusic',
-      description: 'Compositora e multi-instrumentista',
-    },
-    {
-      name: 'DJ Phantom',
-      genre: 'Electronic/House',
-      image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400',
-      instagram: '@djphantom',
-      description: 'DJ e produtor internacional',
-    },
-    {
-      name: 'Sofia Acoustic',
-      genre: 'Folk/MPB',
-      image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400',
-      instagram: '@sofiaacoustic',
-      description: 'Violonista e cantora premiada',
-    },
-    {
-      name: 'The Rebels',
-      genre: 'Rock/Alternative',
-      image: 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=400',
-      instagram: '@therebelsband',
-      description: 'Banda com turnê nacional',
+      image: '/artists/capa-israel.jpg',
+      instagram: '@israelserudo',
+      description: 'Compositor e multi-instrumentista',
     },
   ]
 

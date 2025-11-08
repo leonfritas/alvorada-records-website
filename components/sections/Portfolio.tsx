@@ -22,53 +22,20 @@ export default function Portfolio() {
 
   const projects = [
     {
-      title: 'Amanhecer',
-      artist: 'Ana Silva',
-      category: 'singles',
-      year: '2024',
-      image: 'https://images.unsplash.com/photo-1470225620780-dba8ba36b745?w=400',
-      streams: '2.5M',
-    },
-    {
-      title: 'Ruas da Cidade',
-      artist: 'Marcus Beat',
+      title: 'Cidade das Palhas',
+      artist: 'Conduta Zero 92',
       category: 'albuns',
-      year: '2024',
-      image: 'https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?w=400',
-      streams: '5.8M',
+      year: '2018',
+      image: '/portfolio/album/cidade-das-palhas.jpg',
+      url: 'https://open.spotify.com/intl-pt/album/3VDwaKhFBrLQ7ajdXXue9u',
     },
     {
-      title: 'Sonhos Lúcidos',
-      artist: 'Luna Dreams',
+      title: 'Permanecer',
+      artist: 'Isral Serudo',
       category: 'eps',
-      year: '2023',
-      image: 'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=400',
-      streams: '3.2M',
-    },
-    {
-      title: 'Night Vision',
-      artist: 'DJ Phantom',
-      category: 'singles',
-      year: '2024',
-      image: 'https://images.unsplash.com/photo-1571330735066-03aaa9429d89?w=400',
-      streams: '4.1M',
-    },
-    {
-      title: 'Raízes',
-      artist: 'Sofia Acoustic',
-      category: 'albuns',
-      year: '2023',
-      image: 'https://images.unsplash.com/photo-1514320291840-2e0a9bf2a9ae?w=400',
-      streams: '1.9M',
-    },
-    {
-      title: 'Resistência',
-      artist: 'The Rebels',
-      category: 'eps',
-      year: '2024',
-      image: 'https://images.unsplash.com/photo-1498038432885-c6f3f1b912ee?w=400',
-      streams: '3.7M',
-    },
+      year: '2025',
+      image: '/portfolio/eps/permanecer.jpg',
+    }
   ]
 
   const filteredProjects = activeCategory === 'todos' 
@@ -166,10 +133,6 @@ export default function Portfolio() {
                     </motion.button>
                   </motion.div>
 
-                  {/* Stats Badge */}
-                  <div className="absolute top-4 left-4 glass px-3 py-1 rounded-full text-sm">
-                    {project.streams} streams
-                  </div>
                 </div>
 
                 {/* Project Info */}
@@ -190,7 +153,7 @@ export default function Portfolio() {
         </motion.div>
 
         {/* Stats */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.4 }}
@@ -216,7 +179,7 @@ export default function Portfolio() {
               <div className="text-sm text-gray-400">{stat.label}</div>
             </motion.div>
           ))}
-        </motion.div>
+        </motion.div> */}
       </div>
     </section>
   )

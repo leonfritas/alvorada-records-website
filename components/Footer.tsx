@@ -8,10 +8,9 @@ export default function Footer() {
   const currentYear = new Date().getFullYear()
 
   const socialLinks = [
-    { icon: Instagram, href: '#', label: 'Instagram' },
-    { icon: Facebook, href: '#', label: 'Facebook' },
-    { icon: Youtube, href: '#', label: 'Youtube' },
-    { icon: Twitter, href: '#', label: 'Twitter' },
+    { icon: Instagram, href: 'https://www.instagram.com/alvoradarecords/', label: 'Instagram' },
+    { icon: Facebook, href: 'https://www.facebook.com/alvoradarecords/', label: 'Facebook' },
+    { icon: Youtube, href: 'https://www.youtube.com/@alvoradarecords5172', label: 'Youtube' },
   ]
 
   return (
@@ -26,11 +25,11 @@ export default function Footer() {
               viewport={{ once: true }}
               className="flex items-center space-x-3 mb-4"
             >
-              <CassetteIcon className="w-10 h-7" />
-              <div className="flex flex-col">
-                <span className="text-2xl font-bold text-gradient">A.RCDS</span>
-                <span className="text-xs text-gray-400 -mt-1">RECORDS</span>
-              </div>
+              {/* <CassetteIcon className="w-10 h-7" />
+              <div className="flex flex-col"> */}
+                <span className="text-2xl font-bold text-gradient">LOGO</span>
+                {/* <span className="text-xs text-gray-400 -mt-1">RECORDS</span> */}
+              {/* </div> */}
             </motion.div>
             <motion.p
               initial={{ opacity: 0 }}
@@ -109,7 +108,7 @@ export default function Footer() {
                 className="flex items-center space-x-2 text-gray-400"
               >
                 <Mail className="w-4 h-4 text-primary-500" />
-                <span>contato@alvoradarecords.com</span>
+                <span>alvoradarecords@gmail.com</span>
               </motion.li>
               <motion.li
                 initial={{ opacity: 0, x: -20 }}
@@ -119,7 +118,17 @@ export default function Footer() {
                 className="flex items-center space-x-2 text-gray-400"
               >
                 <Phone className="w-4 h-4 text-primary-500" />
-                <span>(11) 99999-9999</span>
+                <span>(92) 99149-3463</span>
+              </motion.li>
+              <motion.li
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 }}
+                className="flex items-center space-x-2 text-gray-400"
+              >
+                <Phone className="w-4 h-4 text-primary-500" />
+                <span>(92) 98853-8416</span>
               </motion.li>
               <motion.li
                 initial={{ opacity: 0, x: -20 }}
@@ -129,7 +138,7 @@ export default function Footer() {
                 className="flex items-center space-x-2 text-gray-400"
               >
                 <MapPin className="w-4 h-4 text-primary-500" />
-                <span>São Paulo, Brasil</span>
+                <span>Amazonas, Brasil</span>
               </motion.li>
             </ul>
           </div>

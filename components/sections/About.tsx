@@ -33,6 +33,11 @@ export default function About() {
     },
   ]
 
+  const anoAtual = new Date().getFullYear();
+  const anoInicio = 2017;
+
+  const anosDeMercado = anoAtual - anoInicio;
+
   return (
     <section id="sobre" ref={ref} className="py-20 md:py-32 relative overflow-hidden">
       {/* Background Elements */}
@@ -52,7 +57,7 @@ export default function About() {
               transition={{ duration: 0.6 }}
               className="text-4xl md:text-6xl font-bold mb-6"
             >
-              Sobre a <span className="text-gradient">A.RCDS</span>
+              Sobre a <span className="text-gradient">Alvorada Rec</span>
             </motion.h2>
 
             <motion.p
@@ -61,8 +66,8 @@ export default function About() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-lg text-gray-300 mb-6"
             >
-              Somos uma gravadora, produtora e selo musical com estúdio próprio, dedicada a 
-              transformar a visão artística em realidade sonora. Com anos de experiência no 
+              Somos uma gravadora, produtora e selo musical, dedicada a 
+              transformar a visão artística em realidade sonora. Com {anosDeMercado} anos de experiência no 
               mercado musical, oferecemos serviços completos desde a pré-produção até o 
               lançamento final.
             </motion.p>

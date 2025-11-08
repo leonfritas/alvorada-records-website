@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ArrowDown, Play, Sparkles } from 'lucide-react'
+import { ArrowDown, Play, Activity } from 'lucide-react'
 import { useState, useEffect } from 'react'
 
 export default function Hero() {
@@ -56,8 +56,9 @@ export default function Hero() {
             transition={{ duration: 0.6 }}
             className="inline-flex items-center space-x-2 glass px-4 py-2 rounded-full mb-8"
           >
-            <Sparkles className="w-4 h-4 text-primary-400" />
+            <Activity className="w-4 h-4 text-primary-400" />
             <span className="text-sm text-gray-300">Onde a música ganha vida</span>
+            <Activity className="w-4 h-4 text-primary-400" />
           </motion.div>
 
           {/* Main Heading */}
@@ -67,7 +68,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-5xl md:text-7xl lg:text-8xl font-bold mb-6"
           >
-            <span className="text-gradient">A.RCDS</span>
+            <span className="text-gradient">Alvorada Records</span>
           </motion.h1>
 
           <motion.p
@@ -76,7 +77,7 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-xl md:text-2xl text-gray-300 mb-12 max-w-3xl mx-auto"
           >
-            Gravadora, Produtora & Selo Musical com Estúdio Próprio.
+            Gravadora, Produtora & Selo Musical
             <br />
             <span className="text-primary-400">Transformamos sonhos em música de qualidade.</span>
           </motion.p>
@@ -109,7 +110,7 @@ export default function Hero() {
           </motion.div>
 
           {/* Stats */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.8 }}
@@ -135,7 +136,7 @@ export default function Hero() {
                 <div className="text-sm text-gray-400">{stat.label}</div>
               </motion.div>
             ))}
-          </motion.div>
+          </motion.div> */}
         </div>
       </div>
 

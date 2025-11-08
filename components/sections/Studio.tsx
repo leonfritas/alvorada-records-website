@@ -14,41 +14,46 @@ export default function Studio() {
     {
       icon: Monitor,
       name: 'Interfaces de Áudio',
-      description: 'Universal Audio Apollo, Focusrite Clarett',
+      description: 'Focusrite Scarlett 18i20',
     },
     {
       icon: Sliders,
       name: 'Mixers Analógicos',
-      description: 'SSL, Neve, API preamps',
+      description: 'SSL',
     },
     {
       icon: Volume2,
       name: 'Monitores de Estúdio',
-      description: 'Genelec, Yamaha NS-10, Adam Audio',
+      description: 'Edifier R980T',
     },
     {
       icon: Settings,
-      name: 'Processadores',
-      description: 'Compressores, EQs, Reverbs Hardware',
+      name: 'Microfones',
+      description: 'SHURE SM57',
     },
   ]
 
   const rooms = [
     {
-      title: 'Sala A - Gravação',
-      description: 'Sala principal com 80m² totalmente tratada acusticamente',
-      capacity: '15 músicos',
+      title: 'Sala A - Ensaio e Gravação',
+      description: 'Sala principal totalmente tratada acusticamente',
+      capacity: '10 músicos',
     },
+    // {
+    //   title: 'Sala B - Cabine Vocal',
+    //   description: 'Ambiente intimista para gravações vocais de alta qualidade',
+    //   capacity: '1 pessoa',
+    // },
     {
-      title: 'Sala B - Cabine Vocal',
-      description: 'Ambiente intimista para gravações vocais de alta qualidade',
-      capacity: '3 pessoas',
-    },
-    {
-      title: 'Sala C - Mixagem',
+      title: 'Sala B - Mixagem',
       description: 'Equipada com os melhores monitores e processadores',
       capacity: '5 pessoas',
     },
+    // {
+    //   title: 'Espaço para clientes',
+    //   description: 'Área de convivência para visitantes aguardarem com conforto',
+    //   capacity: '10 pessoas',
+    // },    
   ]
 
   return (
@@ -73,7 +78,7 @@ export default function Studio() {
         </motion.div>
 
         {/* Studio Rooms */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-20">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20 ">
           {rooms.map((room, index) => (
             <motion.div
               key={room.title}
@@ -81,7 +86,7 @@ export default function Studio() {
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: index * 0.2 }}
               whileHover={{ scale: 1.05 }}
-              className="glass rounded-2xl p-8 relative overflow-hidden group cursor-pointer"
+              className="glass rounded-2xl p-8 relative overflow-hidden group cursor-pointer text-center"
             >
               <motion.div
                 className="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -91,7 +96,7 @@ export default function Studio() {
                   {room.title}
                 </h3>
                 <p className="text-gray-400 mb-4">{room.description}</p>
-                <div className="flex items-center text-sm text-primary-400">
+                <div className="flex items-center justify-center text-sm text-primary-400">
                   <span className="w-2 h-2 bg-primary-500 rounded-full mr-2" />
                   Capacidade: {room.capacity}
                 </div>
@@ -108,7 +113,7 @@ export default function Studio() {
           className="glass rounded-3xl p-8 md:p-12"
         >
           <h3 className="text-3xl font-bold mb-8 text-center">
-            Equipamentos <span className="text-gradient">Premium</span>
+            Equipamentos
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -122,7 +127,7 @@ export default function Studio() {
                 className="text-center group cursor-pointer"
               >
                 <motion.div
-                  whileHover={{ rotate: 360 }}
+                  // whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.6 }}
                   className="w-20 h-20 bg-gradient-to-br from-primary-500 to-teal-500 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:glow"
                 >
@@ -137,14 +142,14 @@ export default function Studio() {
           </div>
 
           {/* Additional Info */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 1 }}
             className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-center"
           >
             {[
-              { value: '80m²', label: 'Área Total' },
+              { value: '50m²', label: 'Área Total' },
               { value: '24/7', label: 'Disponibilidade' },
               { value: '100%', label: 'Tratamento Acústico' },
             ].map((stat, index) => (
@@ -162,7 +167,7 @@ export default function Studio() {
                 <div className="text-sm text-gray-400">{stat.label}</div>
               </motion.div>
             ))}
-          </motion.div>
+          </motion.div> */}
         </motion.div>
 
         {/* CTA */}
