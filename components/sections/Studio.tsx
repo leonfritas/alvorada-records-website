@@ -106,7 +106,7 @@ export default function Studio() {
         </div>
 
         {/* Equipment Section */}
-        <motion.div
+        {/* <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={inView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8, delay: 0.4 }}
@@ -139,7 +139,7 @@ export default function Studio() {
                 <p className="text-sm text-gray-400">{item.description}</p>
               </motion.div>
             ))}
-          </div>
+          </div> */}
 
           {/* Additional Info */}
           {/* <motion.div
@@ -168,7 +168,7 @@ export default function Studio() {
               </motion.div>
             ))}
           </motion.div> */}
-        </motion.div>
+        {/* </motion.div> */}
 
         {/* CTA */}
         <motion.div

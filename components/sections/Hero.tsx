@@ -6,13 +6,28 @@ import { useState, useEffect } from 'react'
 
 export default function Hero() {
   const [dimensions, setDimensions] = useState({ width: 1920, height: 1080 })
+  const [mounted, setMounted] = useState(false)
 
   useEffect(() => {
     setDimensions({
       width: window.innerWidth,
       height: window.innerHeight,
     })
+    setMounted(true)
   }, [])
+
+  // Valores fixos para evitar problemas de hidratação
+  const particles = Array.from({ length: 20 }, (_, i) => ({
+    id: i,
+    // Usar valores baseados no índice para garantir consistência entre servidor e cliente
+    initialX: (i * 137.5) % (dimensions.width || 1920),
+    initialY: (i * 91.3) % (dimensions.height || 1080),
+    initialScale: 0.5 + ((i * 17) % 50) / 100,
+    initialOpacity: 0.2 + ((i * 23) % 30) / 100,
+    targetX: ((i * 211.7) % (dimensions.width || 1920)),
+    targetY: ((i * 157.3) % (dimensions.height || 1080)),
+    duration: 20 + ((i * 13) % 100) / 10,
+  }))
 
   return (
     <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -22,29 +37,31 @@ export default function Hero() {
       </div>
 
       {/* Animated Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-2 h-2 bg-primary-500 rounded-full"
-            initial={{
-              x: Math.random() * dimensions.width,
-              y: Math.random() * dimensions.height,
-              scale: Math.random() * 0.5 + 0.5,
-              opacity: Math.random() * 0.5 + 0.2,
-            }}
-            animate={{
-              y: [null, Math.random() * dimensions.height],
-              x: [null, Math.random() * dimensions.width],
-            }}
-            transition={{
-              duration: Math.random() * 10 + 20,
-              repeat: Infinity,
-              repeatType: 'reverse',
-            }}
-          />
-        ))}
-      </div>
+      {mounted && (
+        <div className="absolute inset-0 overflow-hidden">
+          {particles.map((particle) => (
+            <motion.div
+              key={particle.id}
+              className="absolute w-2 h-2 bg-primary-500 rounded-full"
+              initial={{
+                x: particle.initialX,
+                y: particle.initialY,
+                scale: particle.initialScale,
+                opacity: particle.initialOpacity,
+              }}
+              animate={{
+                y: [particle.initialY, particle.targetY],
+                x: [particle.initialX, particle.targetX],
+              }}
+              transition={{
+                duration: particle.duration,
+                repeat: Infinity,
+                repeatType: 'reverse',
+              }}
+            />
+          ))}
+        </div>
+      )}
 
       {/* Content */}
       <div className="container mx-auto px-4 relative z-10">

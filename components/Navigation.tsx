@@ -4,25 +4,40 @@ import { useState, useEffect } from 'react'
 import type { MouseEvent } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import CassetteIcon from './CassetteIcon'
 
 const navItems = [
-  { name: 'Início', href: '#inicio' },
-  { name: 'Sobre', href: '#sobre' },
-  { name: 'Serviços', href: '#servicos' },
-  { name: 'Estúdio', href: '#estudio' },
-  { name: 'Artistas', href: '#artistas' },
-  { name: 'Portfólio', href: '#portfolio' },
-  { name: 'Contato', href: '#contato' },
+  { name: 'Início', href: '#inicio', isAnchor: true },
+  { name: 'Sobre', href: '#sobre', isAnchor: true },
+  { name: 'Serviços', href: '#servicos', isAnchor: true },
+  { name: 'Estúdio', href: '#estudio', isAnchor: true },
+  { name: 'Artistas', href: '#artistas', isAnchor: true },
+  { name: 'Portfólio', href: '#portfolio', isAnchor: true },
+  { name: 'Agendar', href: '/agendar', isAnchor: false },
+  { name: 'Contato', href: '#contato', isAnchor: true },
 ]
 
 export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const pathname = usePathname()
 
   const handleNavClick =
-    (href: string) => (event: MouseEvent<HTMLAnchorElement>) => {
+    (href: string, isAnchor: boolean) => (event: MouseEvent<HTMLAnchorElement>) => {
+      if (!isAnchor) {
+        setIsOpen(false)
+        return // Deixa o Link do Next.js lidar com a navegação
+      }
+
       event.preventDefault()
+
+      // Se estiver em outra página, navegar para home primeiro
+      if (pathname !== '/') {
+        window.location.href = `/${href}`
+        return
+      }
 
       const target = document.querySelector(href)
 
@@ -62,36 +77,72 @@ export default function Navigation() {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <motion.a
-            href="#inicio"
-            className="flex items-center space-x-3 text-2xl font-bold"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            {/* <CassetteIcon animated className="w-12 h-8" />
-            <div className="flex flex-col"> */}
+          {pathname === '/' ? (
+            <motion.a
+              href="#inicio"
+              className="flex items-center space-x-3 text-2xl font-bold"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+            >
               <span className="text-gradient text-2xl font-bold">LOGO</span>
-              {/* <span className="text-xs text-gray-400 -mt-1">RECORDS</span> */}
-            {/* </div> */}
-          </motion.a>
+            </motion.a>
+          ) : (
+            <Link href="/">
+              <motion.span
+                className="flex items-center space-x-3 text-2xl font-bold cursor-pointer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <span className="text-gradient text-2xl font-bold">LOGO</span>
+              </motion.span>
+            </Link>
+          )}
 
           {/* Desktop Menu */}
           <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item, index) => (
-              <motion.a
-                key={item.name}
-                href={item.href}
-                className="text-gray-300 hover:text-primary-400 transition-colors relative group"
-                onClick={handleNavClick(item.href)}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                whileHover={{ scale: 1.1 }}
-              >
-                {item.name}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-500 to-teal-500 group-hover:w-full transition-all duration-300" />
-              </motion.a>
-            ))}
+            {navItems.map((item, index) => {
+              const content = (
+                <>
+                  {item.name}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary-500 to-teal-500 group-hover:w-full transition-all duration-300" />
+                </>
+              )
+
+              if (item.isAnchor) {
+                return (
+                  <motion.a
+                    key={item.name}
+                    href={item.href}
+                    className="text-gray-300 hover:text-primary-400 transition-colors relative group"
+                    onClick={handleNavClick(item.href, item.isAnchor)}
+                    initial={{ opacity: 0, y: -20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    whileHover={{ scale: 1.1 }}
+                  >
+                    {content}
+                  </motion.a>
+                )
+              }
+
+              return (
+                <motion.div
+                  key={item.name}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 }}
+                  whileHover={{ scale: 1.1 }}
+                >
+                  <Link
+                    href={item.href}
+                    className="text-gray-300 hover:text-primary-400 transition-colors relative group"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {content}
+                  </Link>
+                </motion.div>
+              )
+            })}
           </div>
 
           {/* Mobile Menu Button */}
@@ -113,19 +164,40 @@ export default function Navigation() {
               className="md:hidden mt-4 rounded-lg overflow-hidden bg-dark-900/95 backdrop-blur-lg border border-white/10"
             >
               <div className="flex flex-col space-y-4 p-4">
-                {navItems.map((item, index) => (
-                  <motion.a
-                    key={item.name}
-                    href={item.href}
-                    className="text-gray-300 hover:text-primary-400 transition-colors py-2"
-                    onClick={handleNavClick(item.href)}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: index * 0.05 }}
-                  >
-                    {item.name}
-                  </motion.a>
-                ))}
+                {navItems.map((item, index) => {
+                  if (item.isAnchor) {
+                    return (
+                      <motion.a
+                        key={item.name}
+                        href={item.href}
+                        className="text-gray-300 hover:text-primary-400 transition-colors py-2"
+                        onClick={handleNavClick(item.href, item.isAnchor)}
+                        initial={{ opacity: 0, x: -20 }}
+                        animate={{ opacity: 1, x: 0 }}
+                        transition={{ delay: index * 0.05 }}
+                      >
+                        {item.name}
+                      </motion.a>
+                    )
+                  }
+
+                  return (
+                    <motion.div
+                      key={item.name}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.05 }}
+                    >
+                      <Link
+                        href={item.href}
+                        className="text-gray-300 hover:text-primary-400 transition-colors py-2 block"
+                        onClick={() => setIsOpen(false)}
+                      >
+                        {item.name}
+                      </Link>
+                    </motion.div>
+                  )
+                })}
               </div>
             </motion.div>
           )}

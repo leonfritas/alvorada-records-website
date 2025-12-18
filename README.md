@@ -21,12 +21,17 @@ Site moderno e animado para gravadora, produtora e selo musical com estúdio pr�
 - **Framer Motion** - Animações
 - **Lucide React** - Ícones
 - **React Intersection Observer** - Scroll animations
+- **mssql** - Cliente SQL Server para Node.js
 
 ## 📦 Instalação
 
 ```bash
 # Instalar dependências
 npm install
+
+# Configurar banco de dados (veja seção abaixo)
+# Inicializar banco de dados
+node scripts/init-database.js
 
 # Rodar em desenvolvimento
 npm run dev
@@ -38,6 +43,47 @@ npm run build
 npm start
 ```
 
+## 🗄️ Configuração do Banco de Dados
+
+O sistema de agendamento utiliza SQL Server. Para configurar:
+
+### Pré-requisitos
+- SQL Server instalado e rodando
+- Acesso com as credenciais configuradas
+
+### Configuração
+
+1. **Opção 1: Script SQL** (Recomendado)
+   - Abra o SQL Server Management Studio
+   - Execute o arquivo `scripts/init-database.sql`
+
+2. **Opção 2: Script Node.js**
+   ```bash
+   node scripts/init-database.js
+   ```
+
+### Credenciais do Banco
+
+As credenciais estão configuradas em `lib/db.ts`:
+- **Server**: localhost
+- **Database**: alvoradarecords
+- **User**: leonardo
+- **Password**: 01042018
+
+⚠️ **Importante**: Altere as credenciais em produção!
+
+### Estrutura da Tabela
+
+A tabela `agenda` possui os seguintes campos:
+- `id` - ID único do agendamento
+- `data` - Data e hora do agendamento
+- `hora` - Horário (formato HH:mm)
+- `nomeBanda` - Nome da banda
+- `telefone` - Telefone de contato
+- `email` - Email de contato
+- `observacoes` - Observações adicionais (opcional)
+- `dataCriacao` - Data de criação do registro
+
 ## 🎯 Seções do Site
 
 1. **Hero** - Apresentação principal com estatísticas
@@ -46,7 +92,8 @@ npm start
 4. **Estúdio** - Equipamentos e estrutura
 5. **Artistas** - Portfolio de artistas
 6. **Portfólio** - Trabalhos realizados
-7. **Contato** - Formulário e informações
+7. **Agendar** - Sistema de agendamento de horários para ensaios
+8. **Contato** - Formulário e informações
 
 ## 🎨 Personalização
 
@@ -83,7 +130,19 @@ Edite os componentes em `components/sections/` para personalizar o conteúdo.
 │       ├── Studio.tsx
 │       ├── Artists.tsx
 │       ├── Portfolio.tsx
+│       ├── Schedule.tsx
 │       └── Contact.tsx
+├── app/
+│   └── api/
+│       └── agenda/          # API routes para agendamento
+│           ├── datas-disponiveis/
+│           ├── horarios-disponiveis/
+│           └── criar/
+├── lib/
+│   └── db.ts                # Configuração do banco de dados
+└── scripts/
+    ├── init-database.sql    # Script SQL para criar banco
+    └── init-database.js     # Script Node.js para criar banco
 └── public/              # Arquivos estáticos
 ```
 
